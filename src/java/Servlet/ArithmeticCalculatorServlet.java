@@ -51,23 +51,23 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
         try {
             int firstNum = Integer.parseInt(request.getParameter("firstNum"));
             int secondNum = Integer.parseInt(request.getParameter("secondNum"));
-            String[] operations = request.getParameterValues("opperand");
+            String operation = request.getParameter("opperand");
             request.setAttribute("firstNum", firstNum);
             request.setAttribute("secondNum", secondNum);
-            for (int n = 0; n < operations.length; n++){
-                if (operations[n].equals("%")){
+//            for (int n = 0; n < operations.length; n++){
+                if (operation.equals("%")){
                     request.setAttribute("message", (firstNum%secondNum));
                 }
-                else if (operations[n].equals("*")){
+                else if (operation.equals("*")){
                     request.setAttribute("message", (firstNum*secondNum));
                 }
-                else if (operations[n].equals("+")){
+                else if (operation.equals("+")){
                     request.setAttribute("message", (firstNum+secondNum));
                 }
-                else if (operations[n].equals("-")){
+                else if (operation.equals("-")){
                     request.setAttribute("message", (firstNum-secondNum));
                 }
-            }
+//            }
                        
         } catch (NumberFormatException e){
             request.setAttribute("message", "Please try again. Input invalid.");
